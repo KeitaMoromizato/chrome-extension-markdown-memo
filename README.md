@@ -1,4 +1,4 @@
 # TODO
 
-- parcel
+- prettier
 - react?

@@ -4,7 +4,7 @@
   "name": "chrome-markdown-memo",
   "version": "0.0.1",
   "chrome_url_overrides" : {
-    "newtab": "index.html"
+    "newtab": "dist/index.html"
   }
 }
 
