@@ -1,0 +1,7 @@
+{
+  "name": "chrome-markedown-memo",
+  "private": true,
+  "version": "0.0.1",
+  "description": "markedon memo chrome extension",
+  "license": "MIT"
+}
