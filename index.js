@@ -9,15 +9,34 @@ const defaultValue = {
 
 chrome.storage.local.get(defaultValue, data => {
   memoArea.value = data.markedownMemo;
+  preview(data.markedownMemo);
 });
+
+function preview(text) {
+  previewArea.innerHTML = marked(text);
+}
 
 memoArea.addEventListener("input", e => {
   const text = e.target.value;
-  previewArea.innerHTML = marked(text);
+  preview(text);
 
   chrome.storage.local.set({ markedownMemo: text }, () => {
     console.log("Saved.");
   });
 });
 
-// TODO storage change listener
+chrome.storage.onChanged.addListener((changes, namespace) => {
+  if (namespace === "local") {
+    for (key in changes) {
+      if (key === "markedownMemo") {
+        chrome.tabs.getCurrent(tab => {
+          if (!tab.active) {
+            const text = changes[key].newValue;
+            memoArea.value = text;
+            preview(text);
+          }
+        });
+      }
+    }
+  }
+});
