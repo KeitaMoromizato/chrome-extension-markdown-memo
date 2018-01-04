@@ -4,12 +4,12 @@ const memoArea = document.querySelector("#memoArea");
 const previewArea = document.querySelector("#previewArea");
 
 const defaultValue = {
-  markedownMemo: ""
+  markdownMemo: ""
 };
 
 chrome.storage.local.get(defaultValue, data => {
-  memoArea.value = data.markedownMemo;
-  preview(data.markedownMemo);
+  memoArea.value = data.markdownMemo;
+  preview(data.markdownMemo);
 });
 
 function preview(text) {
@@ -20,7 +20,7 @@ memoArea.addEventListener("input", e => {
   const text = e.target.value;
   preview(text);
 
-  chrome.storage.local.set({ markedownMemo: text }, () => {
+  chrome.storage.local.set({ markdownMemo: text }, () => {
     console.log("Saved.");
   });
 });
@@ -28,7 +28,7 @@ memoArea.addEventListener("input", e => {
 chrome.storage.onChanged.addListener((changes, namespace) => {
   if (namespace === "local") {
     for (key in changes) {
-      if (key === "markedownMemo") {
+      if (key === "markdownMemo") {
         chrome.tabs.getCurrent(tab => {
           if (!tab.active) {
             const text = changes[key].newValue;

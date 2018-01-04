@@ -34,8 +34,34 @@ textarea {
   border: none;
   background-color: #333;
   color: #eee;
+  font-size: 12px;
 }
 
 textarea:focus {
   border: none;
+}
+
+#previewArea a:visited {
+  color: #eee;
+}
+
+#previewArea pre > code {
+  background-color: #666;
+  display: block;
+  padding: 4px;
+}
+
+#previewArea code {
+  font-weight: bold;
+}
+
+#previewArea h1:before {
+  content: "# ";
+}
+
+#previewArea h2:before {
+  content: "## ";
+}
+#previewArea h3:before {
+  content: "### ";
 }

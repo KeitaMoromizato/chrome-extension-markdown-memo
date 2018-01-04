@@ -1,8 +1,8 @@
 {
-  "name": "chrome-markedown-memo",
+  "name": "chrome-markdown-memo",
   "private": true,
   "version": "0.0.1",
-  "description": "markedon memo chrome extension",
+  "description": "markdown memo chrome extension",
   "license": "MIT",
   "scripts": {
     "build": "parcel index.html"
